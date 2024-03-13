@@ -1,0 +1,22 @@
+# version
+version: '3.0'
+
+# services
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-data:/var/lib/mysql
+    # Uncomment the following lines if you want to load data from csv files 
+    # Please refer to TA5 Tutorial 4 for details
+    #   - ./csv_files:/docker-entrypoint-initdb.d/csv_files
+    # command: 
+    #   - '--local-infile=1'
+    #   - '--secure-file-priv=/docker-entrypoint-initdb.d/csv_files'
